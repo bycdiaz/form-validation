@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 function validation() {
   const password = document.querySelector('#psw');
 
@@ -33,6 +34,7 @@ function validation() {
       if (isNaN(enteredCardNumber)) {
         creditCard.setCustomValidity('Please enter a valid credit card number.');
       } else {
+        // first pass algorithm
         const digits = [];
         enteredCardNumber.toString().split('').forEach((value) => {
           digits.push(parseInt(value, 0));
@@ -69,18 +71,14 @@ function validation() {
               digitSums.push(element);
             }
           });
-          console.log(digitSums);
-          console.log(non2ndDigits);
 
           const allDigitsSum = digitSums.reduce((a, b) => a + b, 0)
           + non2ndDigits.reduce((a, b) => a + b, 0);
 
           if (allDigitsSum % 10 === 0) {
-            console.log('Valid!');
             creditCard.setCustomValidity('');
           }
         } else {
-          // console.log('not a valid CC number');
           creditCard.setCustomValidity('Please enter a valid credit card number.');
         }
       }
@@ -109,11 +107,11 @@ function validation() {
     });
   }
 
-  // validateEmail();
-  // validateZip();
+  validateEmail();
+  validateZip();
   validateCreditCard();
-  // validatePassword();
-  // confirmPassword();
+  validatePassword();
+  confirmPassword();
 }
 
 validation();
